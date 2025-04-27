@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Matcha</title>
+  <style>
+    body {
+      background-color: #8dd36c;
+      display: flex;
+      justify-content: center;
+      align-items: center;  /* Center the content vertically and horizontally */
+      flex-direction: column;  /* Stack the content vertically */
+      min-height: 100vh;  /* Ensure the height is at least 100vh, but can grow as needed */
+      margin: 0;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      overflow-y: auto;  /* Allow vertical scrolling */
+      padding-top: 150px; /* Increase the space at the top */
+    }
+
+    .container {
+      text-align: center;
+      max-width: 90%;
+      margin-bottom: 800px; /* Add a large amount of space between the main content and the recipe */
+    }
+
+    h1 {
+      font-size: 72px;  /* Three times the original size */
+      color: rgb(2, 97, 2);  /* Dark green color for the header text */
+    }
+
+    p {
+      font-size: 24px;
+      color: black;  /* Black color for paragraph text */
+    }
+
+    button {
+      margin: 10px;
+      padding: 15px 30px;
+      font-size: 24px;
+      border-radius: 15px;
+      border: 3px solid rgb(2, 97, 2);  /* Dark green border color for the buttons */
+      background-color: #ffffff;
+      color: rgb(2, 97, 2);  /* Dark green color for button text */
+      cursor: pointer;
+    }
+
+    #response {
+      margin-top: 30px;
+      font-size: 48px;  /* Bigger output text */
+      font-weight: bold;
+      color: rgb(2, 97, 2);  /* Dark green color for the output text */
+    }
+
+    /* Recipe section with slightly bigger text and matching green background */
+    .scrollable-paragraph {
+      margin-top: 50px;
+      font-size: 16px;  /* Slightly larger text for the recipe */
+      font-weight: normal;
+      padding: 20px;
+      background-color: rgb(2, 97, 2);  /* Green background */
+      color: white;  /* White text color for all recipe content */
+      border: 2px solid #ddd;
+      border-radius: 8px;
+    }
+
+    .scrollable-paragraph ul, .scrollable-paragraph ol {
+      color: white;  /* Ensure list items are white too */
+    }
+
+    .scrollable-paragraph strong {
+      color: white;  /* Ensure the bold text is white */
+    }
+
+    /* Ensure specific paragraphs have white text */
+    .scrollable-paragraph p {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>I love MATCHA</h1>
+
+    <p>
+      My name is Mauricio Moreno-Jones and I am the developer of this website.
+      I just want everyone to know that I love MATCHA!
+    </p>
+
+    <p id="question">Do you like MATCHA?</p>
+    <button onclick="handleAnswer('yes')">Yes</button>
+    <button onclick="handleAnswer('no')">No</button>
+    <div id="response"></div>
+  </div>
+
+  <!-- Scrollable Paragraph -->
+  <div class="scrollable-paragraph">
+    <p>Here's a simple recipe for a delicious iced matcha latte:</p>
+
+    <p>Ingredients:</p>
+    <ul>
+      <li>1-2 tsp matcha powder (depending on how strong you like it)</li>
+      <li>2 oz hot water (not boiling, around 175°F or 80°C)</li>
+      <li>1-2 tsp sweetener (like honey, sugar, or agave), optional</li>
+      <li>1/2 cup milk or milk alternative (like almond, oat, or soy milk)</li>
+      <li>Ice cubes</li>
+    </ul>
+
+    <p>Instructions:</p>
+    <ol>
+      <li><strong>Prepare the Matcha:</strong><br>
+          Sift the matcha powder into a small bowl to avoid clumps. Pour the hot water over the matcha powder. Whisk the matcha and water together using a matcha whisk (or a regular whisk) in a zigzag motion until it’s fully dissolved and frothy.</li>
+
+      <li><strong>Sweeten (Optional):</strong><br>
+          If you like a sweeter latte, stir in your choice of sweetener while the matcha is still warm so it dissolves easily.</li>
+
+      <li><strong>Assemble the Latte:</strong><br>
+          Fill a glass with ice cubes. Pour the prepared matcha over the ice.</li>
+
+      <li><strong>Add Milk:</strong><br>
+          Pour your milk or milk alternative into the glass. Adjust the amount to your liking based on how creamy or strong you want your latte.</li>
+
+      <li><strong>Stir & Enjoy:</strong><br>
+          Stir the matcha and milk together until well combined. Enjoy your refreshing iced matcha latte!</li>
+    </ol>
+
+    <p>You can also adjust the sweetness and milk ratio depending on your taste. Enjoy!</p>
+  </div>
+
+  <script>
+    function handleAnswer(answer) {
+      const responseDiv = document.getElementById('response');
+      const heading = document.querySelector('h1');
+      const paragraph = document.querySelector('p');
+      const buttons = document.querySelectorAll('button');
+      const question = document.getElementById('question');
+
+      // Hide all content except for the response (but keep the recipe visible)
+      heading.style.display = 'none';
+      paragraph.style.display = 'none';
+      buttons.forEach(button => button.style.display = 'none');
+      question.style.display = 'none'; // Hide the question after the button is pressed
+
+      // Display the output based on user input, convert it to lowercase and add an exclamation mark
+      if (answer === 'yes') {
+        responseDiv.textContent = 'fantastic!'.toLowerCase();  // Output in lowercase with exclamation mark
+      } else if (answer === 'no') {
+        responseDiv.textContent = 'you stink!'.toLowerCase();  // Output in lowercase with exclamation mark
+      }
+    }
+  </script>
+</body>
+</html>
